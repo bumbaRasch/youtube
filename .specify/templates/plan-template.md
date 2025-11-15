@@ -31,7 +31,23 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+Gates determined based on constitution file:
+
+- Framework: Project MUST target Laravel >= 12.0.
+- Static analysis: PHPStan 9 MUST run and report no errors on CI for new code.
+- Scope: Feature plan MUST justify any scope expansion beyond returning an
+  audio file from a YouTube URL (mp3/m4a/opus). Any additional user-models
+  or account systems MUST be justified in the Complexity Tracking section.
+
+Ensure the Plan documents native dependencies (e.g., ffmpeg) required to
+produce audio outputs and any hosting/runtime considerations.
+ 
+Additional gates:
+
+- Code style: Project MUST include Laravel Pint configuration; the Plan SHOULD
+  note any repository-specific formatting rules.
+- Storage: Use SQLite as the development/test DB by default; any production DB
+  choices MUST be documented and justified.
 
 ## Project Structure
 
