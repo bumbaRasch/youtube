@@ -51,6 +51,12 @@ description: "Task list template for feature implementation"
 - [ ] T001 Create project structure per implementation plan
 - [ ] T002 Initialize [language] project with [framework] dependencies
 - [ ] T003 [P] Configure linting and formatting tools
+ - [ ] T001-LARAVEL Initialize Laravel >=12 project (composer create-project)
+ - [ ] T002-LINT Configure PHPStan 9 and baseline configuration for CI
+ - [ ] T003-FFMPEG Document native dependency requirements (ffmpeg) in quickstart.md
+ - [ ] T004-PINT Configure Laravel Pint and add formatting pre-commit/CI step
+ - [ ] T005-DB Configure SQLite as the default development/test DB and add
+   database config and migrations for SQLite
 
 ---
 

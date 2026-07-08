@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: YouTube Audio Extractor API
+  version: 0.1.0
+paths:
+  /api/extract:
+    post:
+      summary: Extract audio from a public YouTube URL and return MP3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [url]
+              properties:
+                url:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: OK — audio stream (MP3) with download headers
+          content:
+            audio/mpeg:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad request — invalid URL or unsupported content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity — video too long or restricted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+        request_id:
+          type: string

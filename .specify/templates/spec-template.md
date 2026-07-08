@@ -7,18 +7,14 @@
 
 ## User Scenarios & Testing *(mandatory)*
 
-<!--
-  IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
-  Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
-  you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
-  Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
-  Think of each story as a standalone slice of functionality that can be:
-  - Developed independently
-  - Tested independently
-  - Deployed independently
-  - Demonstrated to users independently
--->
+IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by
+importance. Each user story/journey must be INDEPENDENTLY TESTABLE. For the
+YouTube audio extractor project, the MVP MUST be a single HTTP endpoint that
+accepts a YouTube URL and returns an audio file (mp3, m4a, or opus).
+
+Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
+Each story must include at least one automated test (unit or integration). CI
+MUST run PHPUnit/Pest and PHPStan 9; both MUST pass for PR merge.
 
 ### User Story 1 - [Brief Title] (Priority: P1)
 
@@ -75,25 +71,29 @@
 - What happens when [boundary condition]?
 - How does system handle [error scenario]?
 
+
 ## Requirements *(mandatory)*
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
--->
+### Functional Requirements (example for YouTube audio extractor)
 
-### Functional Requirements
+  of the supported formats: mp3, m4a, or opus.
+  response for invalid or unsupported URLs.
+  with YouTube's terms of service; any method used MUST be documented.
+  include content-type and content-disposition headers suitable for direct
+  download.
+  minimal metadata (timestamp, request id, URL hostname) without storing
+  user-provided secrets.
+  
+### Non-functional Requirements
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+- **NFR-001**: Code MUST be formatted with Laravel Pint configuration; CI MUST
+  fail the PR if Pint reports formatting violations.
+- **NFR-002**: Development and test environments MUST support SQLite by
+  default; production database requirements MUST be documented when necessary.
 
-*Example of marking unclear requirements:*
-
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+*Note*: Any additional functional requirements (e.g., user accounts, rate
+limits per user) MUST be justified and elevated in priority via the
+Complexity Tracking table.
 
 ### Key Entities *(include if feature involves data)*
 
